@@ -1,0 +1,73 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Amatic SC', cursive;
+    font-size: 2em;
+}
+
+.soul {
+    width: 15%;
+    filter: invert(1);
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(3, 0.5fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 0px;
+    }
+    
+    .playercontainer { grid-area: 1 / 1 / 2 / 3;}
+    .computercontainer { grid-area: 1 / 8 / 2 / 6;}
+    .rockdiv { grid-area: 2 / 3 / 3 / 4;}
+    .paperdiv { grid-area: 2 / 4 / 3 / 5;}
+    .scissorsdiv { grid-area: 2 / 5 / 3 / 6;}
+    .textdiv { grid-area: 3 / 3 / 3 / 6;}
+
+.names {
+    text-align: center;
+    padding-bottom: 20px;;
+}
+
+.livescontainer {
+    text-align: center;
+}
+
+#rock {
+    width: 100%;
+    filter: invert(1);
+}
+
+.rockdiv, .paperdiv, .scissorsdiv {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: black;
+    border-style: groove;
+    box-shadow: 0 5px #666;
+  }
+  
+  .rockdiv:active, .paperdiv:active, .scissorsdiv:active {
+    transform: translateY(4px);
+  }
+
+#paper {
+    width: 100%;
+    filter: invert(1);
+}
+
+#scissors {
+    width: 90%;
+    filter: invert(1);
+}
+
+.textdiv {
+    padding-top: 70px;
+    text-align: center;
+}
