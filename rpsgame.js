@@ -45,6 +45,8 @@ function game(){
      case 'rockscissors':
         document.querySelector(".textdiv").textContent = 'Rock vs. Scissors, ' + playerName + ' wins!';
         document.querySelector(".computerlivescontainer").textContent = computerLife -= 1;
+        hideAllPictures();
+        setTimeout(function(){showAllPictures()}, 1500);
         break;
      case 'paperrock':
         document.querySelector(".textdiv").textContent = 'Paper vs. Rock, ' + playerName + ' wins!';
@@ -77,9 +79,11 @@ function game(){
         break;
     }
     if (playerLife === 0){
-        setTimeout(function(){ document.querySelector(".textdiv").textContent = 'Computer Wins!'; }, 1500); 
+        hideAllPictures();
+        document.querySelector(".picturecontainer").textContent = 'Computer Wins!';
     } else if (computerLife === 0){
-        setTimeout(function(){ document.querySelector(".textdiv").textContent = playerName + ' Wins!';}, 1500);
+        hideAllPictures();
+        document.querySelector(".picturecontainer").textContent = playerName + ' Wins!';
     }
 }
 
@@ -88,4 +92,16 @@ function stopGameIfZeroLife(){
     if (playerLife && computerLife !==0){
         game();
     }
+}
+
+function hideAllPictures(){
+    document.querySelector(".rockdiv").style.display = "none";
+    document.querySelector(".paperdiv").style.display = "none";
+    document.querySelector(".scissorsdiv").style.display = "none";
+}
+
+function showAllPictures(){
+    document.querySelector(".rockdiv").style.display = "block";
+    document.querySelector(".paperdiv").style.display = "block";
+    document.querySelector(".scissorsdiv").style.display = "block";
 }

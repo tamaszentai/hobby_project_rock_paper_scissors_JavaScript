@@ -19,7 +19,9 @@ body {
     }
     
     .playercontainer { grid-area: 1 / 1 / 2 / 3;}
+    .toptext { grid-area: 1 / 3 / 2 / 6 ; border: red; border-style: double;}
     .computercontainer { grid-area: 1 / 8 / 2 / 6;}
+    .picturecontainer { grid-area: 2 / 3 / 3 / 6;} 
     .rockdiv { grid-area: 2 / 3 / 3 / 4;}
     .paperdiv { grid-area: 2 / 4 / 3 / 5;}
     .scissorsdiv { grid-area: 2 / 5 / 3 / 6;}
@@ -37,10 +39,15 @@ body {
     text-align: center;
 }
 
-#rock {
-    width: 100%;
-    filter: invert(1);
+.picturecontainer {
+    display: grid;
+    width: 813px;
+    height: 343px;
+    text-align: center;
+    font-size: 5em;
+    color: rebeccapurple;
 }
+
 
 .rockdiv, .paperdiv, .scissorsdiv {
     display: inline-block;
@@ -60,6 +67,10 @@ body {
     transform: translateY(4px);
   }
 
+#rock {
+    width: 100%;
+    filter: invert(1);
+}
 #paper {
     width: 100%;
     filter: invert(1);
@@ -73,4 +84,25 @@ body {
 .textdiv {
     padding-top: 70px;
     text-align: center;
+}
+
+.newgame{
+display:inline-block;
+padding:0.2em 1.45em;
+margin:0.1em;
+border:0.15em solid #CCCCCC;
+box-sizing: border-box;
+text-decoration:none;
+font-family:'Segoe UI','Roboto',sans-serif;
+font-weight:400;
+color:#000000;
+background-color:#CCCCCC;
+text-align:center;
+position:relative;
+}
+.newgame:hover{
+border-color:#7a7a7a;
+}
+.newgame:active{
+background-color:#999999;
 }
