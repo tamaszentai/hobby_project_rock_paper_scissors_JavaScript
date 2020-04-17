@@ -3,6 +3,8 @@ document.querySelector("#playername").textContent = playerName + '\'s lives:';
 
 var userChoice;
 var computerChoice;
+var playerLife = 3;
+var computerLife = 3;
 
 function computerSelection(){
     var n = Math.floor(Math.random() * 3);
@@ -14,6 +16,7 @@ function computerSelection(){
         computerChoice = 'scissors';
     }
 }
+
 
 var rock = document.querySelector(".rockdiv");
 var paper = document.querySelector(".paperdiv");
@@ -40,21 +43,27 @@ function game(){
  switch(userChoice + computerChoice){
      case 'rockscissors':
         document.querySelector(".textdiv").textContent = 'Rock beats Scissors, ' + playerName + ' wins!';
+        document.querySelector(".computerlivescontainer").textContent = computerLife -= 1;
         break;
      case 'paperrock':
         document.querySelector(".textdiv").textContent = 'Paper beats Rock, ' + playerName + ' wins!';
+        document.querySelector(".computerlivescontainer").textContent = computerLife -= 1;
         break;
      case 'scissorspaper':
         document.querySelector(".textdiv").textContent = 'Scissors beats Paper, ' + playerName + ' wins!';
+        document.querySelector(".computerlivescontainer").textContent = computerLife -= 1;
         break;
     case 'scissorsrock':
         document.querySelector(".textdiv").textContent = 'Scissors beaten by Rock, Computer wins!';
+        document.querySelector(".playerlivescontainer").textContent = playerLife -= 1;
         break;
     case 'rockpaper':
         document.querySelector(".textdiv").textContent = 'Rock beaten by Paper, Computer wins!';
+        document.querySelector(".playerlivescontainer").textContent = playerLife -= 1;
         break;
     case 'paperscissors':
-        document.querySelector(".textdiv").textContent = 'Paper beaten by Scissors, Computer wins!'; 
+        document.querySelector(".textdiv").textContent = 'Paper beaten by Scissors, Computer wins!';
+        document.querySelector(".playerlivescontainer").textContent = playerLife -= 1;
         break;
     case 'rockrock':
         document.querySelector(".textdiv").textContent = 'Rock and Rock, Draw!'; 
