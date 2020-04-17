@@ -30,7 +30,10 @@ body {
     padding-bottom: 20px;;
 }
 
-.livescontainer {
+.playerlivescontainer {
+    text-align: center;
+}
+.computerlivescontainer {
     text-align: center;
 }
 
