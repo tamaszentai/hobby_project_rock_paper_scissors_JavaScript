@@ -13,7 +13,7 @@ body {
 .parent {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(3, 0.5fr);
+    grid-template-rows: repeat(3, 0.5fr) ;
     grid-column-gap: 5px;
     grid-row-gap: 0px;
     }
@@ -41,15 +41,14 @@ body {
 
 .picturecontainer {
     display: grid;
-    width: 813px;
-    height: 343px;
     text-align: center;
-    font-size: 5em;
+    font-size: 3em;
     color: rebeccapurple;
 }
 
 
 .rockdiv, .paperdiv, .scissorsdiv {
+    max-height: 100%;
     display: inline-block;
     padding: 15px 25px;
     font-size: 24px;

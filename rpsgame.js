@@ -46,6 +46,8 @@ function game(){
         document.querySelector(".textdiv").textContent = 'Rock vs. Scissors, ' + playerName + ' wins!';
         document.querySelector(".computerlivescontainer").textContent = computerLife -= 1;
         hideAllPictures();
+        document.querySelector(".picturecontainer").textContent = playerName + ' has won the round!'
+        setTimeout(function(){document.querySelector(".picturecontainer").textContent = ''}, 1500);
         setTimeout(function(){showAllPictures()}, 1500);
         break;
      case 'paperrock':
@@ -100,8 +102,29 @@ function hideAllPictures(){
     document.querySelector(".scissorsdiv").style.display = "none";
 }
 
+
 function showAllPictures(){
-    document.querySelector(".rockdiv").style.display = "block";
-    document.querySelector(".paperdiv").style.display = "block";
-    document.querySelector(".scissorsdiv").style.display = "block";
+    document.querySelector(".rockdiv").style.display = "inline-block";
+    document.querySelector(".paperdiv").style.display = "inline-block";
+    document.querySelector(".scissorsdiv").style.display = "inline-block";
 }
+
+
+// function hideAllPictures(){
+//     document.querySelector(".picturecontainer").style.display = "none";
+// }
+
+// function showAllPictures(){
+//     document.querySelector(".picturecontainer").style.display = "grid";
+// }
+
+// function togglePictures(){
+//     var a = document.querySelector(".rockdiv");
+//     var b = document.querySelector(".paperdiv");
+//     var c = document.querySelector(".scissorsdiv")
+//     if (a.style.display === "block" && b.style.display === "block" && c.style.display === "block"){
+//         a.style.display === "none" && b.style.display === "none" && c.style.display === "none";
+//     } else {
+//         a.style.display === "block" && b.style.display === "block" && c.style.display === "block";
+//     }
+// }
