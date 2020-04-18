@@ -7,8 +7,6 @@ var playerLife = [life, life, life];
 var computerLife = [life, life, life];
 var life = document.querySelector(".soul");
 
-
-
 function computerSelection(){
     var n = Math.floor(Math.random() * 3);
     if (n === 0){
@@ -19,7 +17,6 @@ function computerSelection(){
         computerChoice = 'scissors';
     }
 }
-
 
 var rock = document.querySelector(".rockdiv");
 var paper = document.querySelector(".paperdiv");
@@ -38,8 +35,6 @@ scissors.addEventListener("click", function(){
     userChoice = 'scissors';
     stopGameIfZeroLife();
 });
-
-
 
 function game(){
     computerSelection();
@@ -75,7 +70,6 @@ function game(){
     }
 
 win();
-  
 }
 
 function win(){
@@ -88,7 +82,6 @@ function win(){
     }
 }  
 
-
 function stopGameIfZeroLife(){
     if (playerLife.length !==0 && computerLife.length !==0){
         game();
@@ -100,7 +93,6 @@ function hideAllPictures(){
     document.querySelector(".paperdiv").style.display = "none";
     document.querySelector(".scissorsdiv").style.display = "none";
 }
-
 
 function showAllPictures(){
     document.querySelector(".rockdiv").style.display = "inline-block";
@@ -115,7 +107,6 @@ function hideTextDiv(){
 function showTextDiv(){
     document.querySelector(".textdiv").style.display = "block";
 }
-
 
 function playerWonRound() {
     function removelife(){
@@ -152,7 +143,6 @@ function computerWonRound() {
     setTimeout(function(){showAllPictures()}, 1000);
     setTimeout(function(){showTextDiv()}, 1000);
 }
-
 
 function draw(){
     document.querySelector(".picturetextdiv").textContent = 'Round Draw!';
