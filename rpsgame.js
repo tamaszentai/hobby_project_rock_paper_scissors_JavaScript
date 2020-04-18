@@ -3,8 +3,11 @@ document.querySelector("#playername").textContent = playerName + '\'s lives:';
 
 var userChoice;
 var computerChoice;
-var playerLife = 3;
-var computerLife = 3;
+var playerLife = [life, life, life];
+var computerLife = [life, life, life];
+var life = document.querySelector(".soul");
+
+
 
 function computerSelection(){
     var n = Math.floor(Math.random() * 3);
@@ -43,55 +46,51 @@ function game(){
     
  switch(userChoice + computerChoice){
      case 'rockscissors':
-        document.querySelector(".textdiv").textContent = 'Rock vs. Scissors, ' + playerName + ' wins!';
-        document.querySelector(".computerlivescontainer").textContent = computerLife -= 1;
-        hideAllPictures();
-        document.querySelector(".picturecontainer").textContent = playerName + ' has won the round!'
-        setTimeout(function(){document.querySelector(".picturecontainer").textContent = ''}, 1500);
-        setTimeout(function(){showAllPictures()}, 1500);
+        playerWonRound();
         break;
      case 'paperrock':
-        document.querySelector(".textdiv").textContent = 'Paper vs. Rock, ' + playerName + ' wins!';
-        document.querySelector(".computerlivescontainer").textContent = computerLife -= 1;
+        playerWonRound();
         break;
      case 'scissorspaper':
-        document.querySelector(".textdiv").textContent = 'Scissors vs. Paper, ' + playerName + ' wins!';
-        document.querySelector(".computerlivescontainer").textContent = computerLife -= 1;
+        playerWonRound();
         break;
     case 'scissorsrock':
-        document.querySelector(".textdiv").textContent = 'Scissors vs. Rock, Computer wins!';
-        document.querySelector(".playerlivescontainer").textContent = playerLife -= 1;
+        computerWonRound();
         break;
     case 'rockpaper':
-        document.querySelector(".textdiv").textContent = 'Rock vs. Paper, Computer wins!';
-        document.querySelector(".playerlivescontainer").textContent = playerLife -= 1;
+        computerWonRound();
         break;
     case 'paperscissors':
-        document.querySelector(".textdiv").textContent = 'Paper vs. Scissors, Computer wins!';
-        document.querySelector(".playerlivescontainer").textContent = playerLife -= 1;
+        computerWonRound();
         break;
     case 'rockrock':
-        document.querySelector(".textdiv").textContent = 'Rock vs. Rock, Draw!'; 
+        draw();
         break;
     case 'paperpaper':
-        document.querySelector(".textdiv").textContent = 'Paper vs. Paper, Draw!'; 
+        draw(); 
         break;
     case 'scissorsscissors':
-        document.querySelector(".textdiv").textContent = 'Scissors vs. Scissors, Draw!';
+        draw();
         break;
     }
-    if (playerLife === 0){
+
+win();
+  
+}
+
+function win(){
+    if (playerLife.length === 0){
         hideAllPictures();
         document.querySelector(".picturecontainer").textContent = 'Computer Wins!';
-    } else if (computerLife === 0){
+    } else if (computerLife.length === 0){
         hideAllPictures();
         document.querySelector(".picturecontainer").textContent = playerName + ' Wins!';
     }
-}
+}  
 
 
 function stopGameIfZeroLife(){
-    if (playerLife && computerLife !==0){
+    if (playerLife.length !==0 && computerLife.length !==0){
         game();
     }
 }
@@ -109,22 +108,57 @@ function showAllPictures(){
     document.querySelector(".scissorsdiv").style.display = "inline-block";
 }
 
+function hideTextDiv(){
+    document.querySelector(".textdiv").style.display = "none";
+}
 
-// function hideAllPictures(){
-//     document.querySelector(".picturecontainer").style.display = "none";
-// }
+function showTextDiv(){
+    document.querySelector(".textdiv").style.display = "block";
+}
 
-// function showAllPictures(){
-//     document.querySelector(".picturecontainer").style.display = "grid";
-// }
 
-// function togglePictures(){
-//     var a = document.querySelector(".rockdiv");
-//     var b = document.querySelector(".paperdiv");
-//     var c = document.querySelector(".scissorsdiv")
-//     if (a.style.display === "block" && b.style.display === "block" && c.style.display === "block"){
-//         a.style.display === "none" && b.style.display === "none" && c.style.display === "none";
-//     } else {
-//         a.style.display === "block" && b.style.display === "block" && c.style.display === "block";
-//     }
-// }
+function playerWonRound() {
+    function removelife(){
+        computerLife.pop();
+        for (var i = computerLife.length; i >= 0; i--){ 
+        console.log(i);
+        document.getElementById("computersoul" + i).style.display = "none";
+        break;
+        }
+    }
+    removelife();
+    hideAllPictures();
+    hideTextDiv();
+    document.querySelector(".picturetextdiv").textContent = playerName + ' has won the round!'
+    setTimeout(function(){document.querySelector(".picturetextdiv").textContent = ''}, 1000);
+    setTimeout(function(){showAllPictures()}, 1000);
+    setTimeout(function(){showTextDiv()}, 1000);
+}
+
+function computerWonRound() {
+    function removelife(){
+        playerLife.pop();
+        for (var i = playerLife.length; i >= 0; i--){ 
+        console.log(i);
+        document.getElementById("playersoul" + i).style.display = "none";
+        break;
+        }
+    }
+    removelife();
+    hideAllPictures();
+    hideTextDiv();
+    document.querySelector(".picturetextdiv").textContent = 'Computer has won the round!'
+    setTimeout(function(){document.querySelector(".picturetextdiv").textContent = ''}, 1000);
+    setTimeout(function(){showAllPictures()}, 1000);
+    setTimeout(function(){showTextDiv()}, 1000);
+}
+
+
+function draw(){
+    document.querySelector(".picturetextdiv").textContent = 'Round Draw!';
+    hideAllPictures();
+    hideTextDiv();
+    setTimeout(function(){document.querySelector(".picturetextdiv").textContent = ''}, 1000);
+    setTimeout(function(){showAllPictures()}, 1000);
+    setTimeout(function(){showTextDiv()}, 1000);
+}
